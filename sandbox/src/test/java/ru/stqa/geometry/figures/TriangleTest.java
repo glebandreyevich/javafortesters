@@ -11,4 +11,29 @@ public class TriangleTest {
     void calculatePerimetr(){
         Assertions.assertEquals(12.0,triangle.calculatePerimeter());
     }
+    @Test
+    void TriangleZeroSide(){
+        {
+            try {
+                new Triangle(1.0,-2.0,5.0);
+                Assertions.fail();
+            }
+            catch (IllegalArgumentException exception) {
+                Assertions.assertEquals("All sides of triangle should be non-negative",exception.getMessage());
+            }
+        }
+
+    }
+    @Test
+    void InvalidTriangleInequality()
+    {
+        try {
+            new Triangle(1.0,2.0,5.0);
+            Assertions.fail();
+        }
+        catch (IllegalArgumentException exception) {
+            Assertions.assertEquals("Triangle inequality is violated",exception.getMessage());
+
+        }
+    }
 }
