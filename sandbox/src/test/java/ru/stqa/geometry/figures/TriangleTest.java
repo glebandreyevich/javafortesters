@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 public class TriangleTest {
     Triangle triangle = new Triangle(3.0, 4.0, 5.0);
+    Triangle triangle1 = new Triangle(3.0,4.0,5.0);
+    Triangle triangle2 = new Triangle (4.0,5.0,3.0);
     @Test
     void calculateArea(){
         Assertions.assertEquals(6.0,triangle.calculateArea());
@@ -10,6 +12,10 @@ public class TriangleTest {
     @Test
     void calculatePerimetr(){
         Assertions.assertEquals(12.0,triangle.calculatePerimeter());
+    }
+    @Test
+    void testTriangle(){
+        Assertions.assertEquals(triangle1,triangle2);
     }
     @Test
     void TriangleZeroSide(){
