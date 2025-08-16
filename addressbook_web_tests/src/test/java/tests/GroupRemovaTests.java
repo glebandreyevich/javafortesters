@@ -6,12 +6,12 @@ public class GroupRemovaTests extends TestBase {
 
     @Test
     public void CanRemoveGroup() {
-        openGroupPage();
-        if (IsGroupPresent())
+        app.openGroupPage();
+        if (app.IsGroupPresent())
        {
-           CreateGroup(new GroupData("name", "header", "footer"));
+           app.CreateGroup(new GroupData("name", "header", "footer"));
        }
-        removeGroup();
+        app.removeGroup();
     }
 
 }
