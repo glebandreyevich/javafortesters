@@ -10,6 +10,10 @@ public class HelperBase {
         this.manager = manager;
     }
 
+
+
+
+
     protected void type(By locator, String text) {
         click((locator));
         manager.driver.findElement(locator).clear();
