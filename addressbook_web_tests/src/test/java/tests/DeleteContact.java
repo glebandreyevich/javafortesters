@@ -13,6 +13,7 @@ public class DeleteContact extends TestBase {
         app.contact().removeContact();
 
     }
+
 }
 
 
