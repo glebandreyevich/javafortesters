@@ -19,10 +19,6 @@ public class GroupHelper extends HelperBase{
         }
     }
 
-    public boolean IsGroupPresent(ApplicationManager manager) {
-        openGroupPage();
-        return !manager.isElementPresent(By.name("selected[]"));
-    }
 
     public void CreateGroup(GroupData group) {
         openGroupPage();

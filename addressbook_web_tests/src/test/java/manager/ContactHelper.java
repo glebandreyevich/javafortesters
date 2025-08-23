@@ -20,16 +20,17 @@ public class ContactHelper extends HelperBase {
 
 
 
-    public boolean IsContactPresent(ApplicationManager manager) {
-        return !manager.isElementPresent(By.name("selected[]"));
-      }
-
       public void removeContact()
       {
           click(By.name("selected[]"));
           click(By.cssSelector("div.left:nth-child(8) > input:nth-child(1)"));
 
       }
+    public int countContact()
+    {
+        return manager.driver.findElements(By.name("selected[]")).size();
+
+    }
 
     public void createContact(ContactData contact){
         initContactAdd();
@@ -63,6 +64,7 @@ public class ContactHelper extends HelperBase {
     private void initContactAdd() {
         click(By.linkText("add new"));
     }
+
 
 
 
