@@ -22,4 +22,14 @@ public class GroupCreationTests extends TestBase{
     @Test void canCreateGroupWithNameOnly(){
         app.groups().CreateGroup(new GroupData().withName("some name"));
     }
+    @Test
+    public void CanCreateGroups() {
+        int n=5;
+        int groupCount = app.groups().getCount();
+        for (int i=0; i<n; i++) {
+            app.groups().CreateGroup(new GroupData(randomString(i*10), "header", "footer"));
+        }
+        int newGroupCount = app.groups().getCount();
+        Assertions.assertEquals(groupCount +n,newGroupCount);
+    }
 }
