@@ -8,7 +8,7 @@ public class GroupModificationTests extends TestBase{
     void canModifyGroup(){
         if (app.groups().getCount() == 0)
         {
-            app.groups().CreateGroup(new GroupData("name", "header", "footer"));
+            app.groups().CreateGroup(new GroupData("", "name", "header", "footer"));
         }
         app.groups().modifyGroup(new GroupData().withName("modified name"));
     }
