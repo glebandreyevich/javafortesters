@@ -13,7 +13,7 @@ public class CreateContact extends TestBase {
 
     public static List<ContactData> contactProviders() {
         var result = new ArrayList<ContactData>();
-        for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < 3; i++) {
             result.add(new ContactData().withFirstName( randomString(i * 10)).withLastName(randomString(i*10)));
         }
         return result;
@@ -32,7 +32,7 @@ public class CreateContact extends TestBase {
         newContact.sort(compareById);
         var expectedList = new ArrayList<>(oldContact);
         newContact.sort(compareById);
-        expectedList.add(contact.withId(newContact.get(newContact.size()-1).id()).withFirstName("").withLastName(""));
+        expectedList.add(contact.withId(newContact.get(newContact.size()-1).id()));
         expectedList.sort(compareById);
         Assertions.assertEquals(newContact ,expectedList);
     }

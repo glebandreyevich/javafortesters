@@ -85,10 +85,28 @@ public class ContactHelper extends HelperBase {
         for (var tr : entry) {
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("id");
-            contacts.add(new ContactData().withId(id));
+            var firstName = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            var lastName = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
         }
-        return contacts;
+            return contacts;
+    }
 
 
+        public void modifyContact(ContactData contact,ContactData modifiedContact) {
+            selectContact(contact);
+            initContactModification();
+            fillContactData(modifiedContact);
+            submitContactModify();
+            openHomePage();
+
+    }
+
+    private void submitContactModify() {
+        click(By.name("update"));
+    }
+
+    private void initContactModification() {
+        click(By.xpath("//img[@title='Edit']"));
     }
 }
