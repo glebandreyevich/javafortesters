@@ -2,26 +2,20 @@ package model;
 
 
 public record ContactData(
+
+        String id,
         String firstName,
-        String lastName,
-        String address,
-        String homePhone,
-        String mobilePhone,
-        String workPhone,
-        String email,
-        String email2,
-        String email3,
+        String lastName
         //String company,
         //String title,
-        String fax
-       // String website,
+        // String website,
         //String address2,
         //String phone2,
         //String notes,
         //String middlename,
         //String nickname,
         //String photo,
-       // String anniversaryDay,
+        // String anniversaryDay,
         //String anniversaryMonth,
         //String anniversaryYear,
         //String birthdayDay,
@@ -29,7 +23,15 @@ public record ContactData(
         //String birthdayYear
 ) {
     public ContactData() {
-        this("", "", "", "", "", "", "", "", "", "");
+        this(" ", "", "");
     }
+    public ContactData withFirstName(String firstName){
+        return new ContactData("",firstName,this.lastName);
+    }
+    public ContactData withLastName(String firstName){
+        return new ContactData("",this.firstName,lastName);
+    }
+
+
 
 }
