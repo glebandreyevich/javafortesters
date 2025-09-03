@@ -13,7 +13,7 @@ public class CreateContact extends TestBase {
 
     public static List<ContactData> contactProviders() {
         var result = new ArrayList<ContactData>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i < 6; i++) {
             result.add(new ContactData().withFirstName( randomString(i * 10)).withLastName(randomString(i*10)));
         }
         return result;
@@ -23,13 +23,18 @@ public class CreateContact extends TestBase {
     @ParameterizedTest
     @MethodSource("contactProviders")
     public void CreateContacts(ContactData contact) {
-        int ContactCount = app.contact().countContact();
+        var oldContact=app.contact().GetList();
         app.contact().createContact(contact);
-        int newContactCount = app.contact().countContact();
+        var newContact=app.contact().GetList();
         Comparator<ContactData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
-        Assertions.assertEquals(ContactCount + 1, newContactCount);
+        newContact.sort(compareById);
+        var expectedList = new ArrayList<>(oldContact);
+        newContact.sort(compareById);
+        expectedList.add(contact.withId(newContact.get(newContact.size()-1).id()).withFirstName("").withLastName(""));
+        expectedList.sort(compareById);
+        Assertions.assertEquals(newContact ,expectedList);
     }
 
 }
