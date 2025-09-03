@@ -94,6 +94,7 @@ public class ContactHelper extends HelperBase {
 
 
         public void modifyContact(ContactData contact,ContactData modifiedContact) {
+            openHomePage();
             selectContact(contact);
             initContactModification();
             fillContactData(modifiedContact);

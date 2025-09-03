@@ -39,6 +39,7 @@ public class GroupHelper extends HelperBase{
         fillGroupForm(modifiedGroup);
         submitGroupModification();
         returnToGroupsPage();
+
     }
     public void removeGroup(GroupData group) {
         openGroupPage();
