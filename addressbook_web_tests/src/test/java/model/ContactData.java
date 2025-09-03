@@ -28,9 +28,13 @@ public record ContactData(
     public ContactData withFirstName(String firstName){
         return new ContactData("",firstName,this.lastName);
     }
-    public ContactData withLastName(String firstName){
+    public ContactData withLastName(String lastName){
         return new ContactData("",this.firstName,lastName);
     }
+    public ContactData withId(String id){
+        return new ContactData(this.id ,firstName,lastName);
+    }
+
 
 
 
