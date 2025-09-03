@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase {
       }
 
     private void selectContact(ContactData contact) {
-        click(By.cssSelector(String.format("input[id='%s']", contact.id())));
+        click(By.cssSelector(String.format("[id='%s']", contact.id())));
     }
 
     public int countContact()
@@ -74,16 +74,21 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
+    private void openHomePage() {
+        click(By.cssSelector("#nav > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"));
+    }
 
     public List<ContactData> GetList() {
-        var contact =  new ArrayList<ContactData>();
-        var entri = manager.driver.findElements(By.name("entry"));
-        for (var entry : entri) {
-            var name = entry.getText();
-            var checkbox = entry.findElement(By.cssSelector("input"));
-            var id =  checkbox.getAttribute("value");
-            contact.add(new ContactData().withId(id));
+        openHomePage();
+        var contacts = new ArrayList<ContactData>();
+        var entry = manager.driver.findElements(By.cssSelector("tr[name='entry']"));
+        for (var tr : entry) {
+            var checkbox = tr.findElement(By.name("selected[]"));
+            var id = checkbox.getAttribute("id");
+            contacts.add(new ContactData().withId(id));
         }
-        return contact;
+        return contacts;
+
+
     }
 }

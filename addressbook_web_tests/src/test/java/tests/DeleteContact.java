@@ -14,14 +14,14 @@ public class DeleteContact extends TestBase {
         if (app.contact().countContact()==0) {
             app.contact().createContact(new ContactData(" ", "firstname", "lastname"));
         }
-        var oldContacts = app.contact().GetList();
+        var oldContact = app.contact().GetList();
         var random = new Random();
-        var index = random.nextInt(oldContacts.size());
-        app.contact().removeContact(oldContacts.get(index));
-        var newContacts = app.contact().GetList();
-        var expectedList = new ArrayList<>(oldContacts);
+        var index = random.nextInt(oldContact.size());
+        app.contact().removeContact(oldContact.get(index));
+        var newContact = app.contact().GetList();
+        var expectedList = new ArrayList<>(oldContact);
         expectedList.remove(index);
-        Assertions.assertEquals(newContacts, expectedList);
+        Assertions.assertEquals(newContact, expectedList);
 
     }
 

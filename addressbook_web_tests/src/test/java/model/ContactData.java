@@ -26,13 +26,13 @@ public record ContactData(
         this(" ", "", "");
     }
     public ContactData withFirstName(String firstName){
-        return new ContactData("",firstName,this.lastName);
+        return new ContactData(this.id,firstName,this.lastName);
     }
     public ContactData withLastName(String lastName){
-        return new ContactData("",this.firstName,lastName);
+        return new ContactData(this.id,this.firstName,lastName);
     }
     public ContactData withId(String id){
-        return new ContactData(this.id ,firstName,lastName);
+        return new ContactData(id ,this.firstName,this.lastName);
     }
 
 
