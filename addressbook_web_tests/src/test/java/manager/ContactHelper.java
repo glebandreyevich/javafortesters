@@ -107,8 +107,6 @@ public class ContactHelper extends HelperBase {
     }
 
     private void initContactModification(ContactData contact) {
-        var elementId = manager.driver.findElement(By.id(contact.id()));
-
         String xpath = String.format("//*[@id='%s']/ancestor::tr//td[8]", contact.id());
         var editButton = manager.driver.findElement(By.xpath(xpath));
         editButton.click();
