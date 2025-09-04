@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import common.commonfunctions;
+import model.ContactData;
 import model.GroupData;
 import java.io.File;
 
@@ -64,6 +65,7 @@ public class Generator {
         if ("groups".equals(type)){
             return generateGroups();
         }
+
         if ("contacts".equals(type)){
             return generateContact();
         } else {
@@ -82,7 +84,11 @@ public class Generator {
     }
 
     private Object generateContact() {
-        return null;
+        var result = new ArrayList<ContactData>();
+        for (int i = 1; i < count; i++) {
+            result.add(new ContactData().withFirstName( commonfunctions.randomString(i * 10)).withLastName(commonfunctions.randomString(i*10)).withPhoto(commonfunctions.randomfile("src/test/resources/images/")));
+        }
+        return result;
     }
 
 }

@@ -1,9 +1,14 @@
 package tests;
-import common.commonfunctions;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -12,11 +17,16 @@ import java.util.List;
 public class CreateContact extends TestBase {
 
 
-    public static List<ContactData> contactProviders() {
+    public static List<ContactData> contactProviders() throws IOException {
         var result = new ArrayList<ContactData>();
-        for (int i = 1; i < 5; i++) {
-            result.add(new ContactData().withFirstName( commonfunctions.randomString(i * 10)).withLastName(commonfunctions.randomString(i*10)).withPhoto(randomfile("src/test/resources/images/")));
-        }
+        /*for (int i = 1; i < 5; i++) {
+            result.add(new ContactData().withFirstName( commonfunctions.randomString(i * 10)).withLastName(commonfunctions.randomString(i*10)).withPhoto(commonfunctions.randomfile("src/test/resources/images/")));
+        }*/
+        ObjectMapper mapper = new ObjectMapper();
+        var json = Files.readString(Paths.get("contacts.json"));
+        var value = mapper.readValue(json, new TypeReference<List<ContactData>>() {
+        });
+        result.addAll(value);
         return result;
     }
 
@@ -33,7 +43,7 @@ public class CreateContact extends TestBase {
         newContact.sort(compareById);
         var expectedList = new ArrayList<>(oldContact);
         newContact.sort(compareById);
-        expectedList.add(contact.withId(newContact.get(newContact.size()-1).id()));
+        expectedList.add(contact.withId(newContact.get(newContact.size()-1).id()).withPhoto(null));
         expectedList.sort(compareById);
         Assertions.assertEquals(newContact ,expectedList);
     }
