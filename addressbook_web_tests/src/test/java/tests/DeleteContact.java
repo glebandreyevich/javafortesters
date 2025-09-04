@@ -11,7 +11,7 @@ public class DeleteContact extends TestBase {
     @Test
     public void removeContact() {
         if (app.contact().countContact()==0) {
-            app.contact().createContact(new ContactData(" ", "firstname", "lastname"));
+            app.contact().createContact(new ContactData(" ", "firstname", "lastname", " "));
         }
         var oldContact = app.contact().GetList();
         var random = new Random();

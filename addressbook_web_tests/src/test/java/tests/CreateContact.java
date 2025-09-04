@@ -14,7 +14,7 @@ public class CreateContact extends TestBase {
     public static List<ContactData> contactProviders() {
         var result = new ArrayList<ContactData>();
         for (int i = 1; i < 5; i++) {
-            result.add(new ContactData().withFirstName( randomString(i * 10)).withLastName(randomString(i*10)));
+            result.add(new ContactData().withFirstName( randomString(i * 10)).withLastName(randomString(i*10)).withPhoto("src/test/resources/images/avatar.png"));
         }
         return result;
     }
