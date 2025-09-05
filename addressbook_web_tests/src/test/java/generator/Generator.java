@@ -40,24 +40,24 @@ public class Generator {
     }
 
     private void save(Object data) throws IOException {
-        if("json".equals(format)) {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            var json = mapper.writeValueAsString(data);
-            try (var writer = new FileWriter(output)) {
-                writer.write(json);
+        switch (format) {
+            case "json" -> {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.enable(SerializationFeature.INDENT_OUTPUT);
+                var json = mapper.writeValueAsString(data);
+                try (var writer = new FileWriter(output)) {
+                    writer.write(json);
+                }
             }
-        }
-            if ("yaml".equals(format)) {
+            case "yaml" -> {
                 var mappers = new YAMLMapper();
-                mappers.writeValue(new File (output),data);
+                mappers.writeValue(new File(output), data);
             }
-        if ("xml".equals(format)) {
-            var mappers = new XmlMapper();
-            mappers.writeValue(new File (output),data);
-        }
-        else {
-            throw new IllegalArgumentException("Unknown Type" + format);
+            case "xml" -> {
+                var mappers = new XmlMapper();
+                mappers.writeValue(new File(output), data);
+            }
+            default -> throw new IllegalArgumentException("Unknown Type" + format);
         }
     }
 
@@ -66,7 +66,7 @@ public class Generator {
             return generateGroups();
         }
 
-        if ("contacts".equals(type)){
+        else if ("contacts".equals(type)){
             return generateContact();
         } else {
             throw new IllegalArgumentException("Unknown Type" + type);
