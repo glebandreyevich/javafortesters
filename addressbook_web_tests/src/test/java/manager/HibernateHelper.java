@@ -1,6 +1,8 @@
 package manager;
 
+import manager.hbm.ContactRecord;
 import manager.hbm.GroupRecord;
+import model.ContactData;
 import model.GroupData;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
@@ -16,7 +18,8 @@ public class HibernateHelper  extends  HelperBase{
         super(manager);
         sessionFactory  = new Configuration()
                         .addAnnotatedClass(GroupRecord.class)
-                        .setProperty(AvailableSettings.URL, "jdbc:mysql://localhost/addressbook")
+                        .addAnnotatedClass(ContactRecord.class)
+                        .setProperty(AvailableSettings.URL, "jdbc:mysql://localhost/addressbook?zeroDateTimeBehavior=convertToNull")
                         .setProperty(AvailableSettings.USER, "root")
                         .setProperty(AvailableSettings.PASS, "")
                         .buildSessionFactory();
@@ -29,9 +32,23 @@ public class HibernateHelper  extends  HelperBase{
         return result;
     }
 
+
+    private static ContactData convert(ContactRecord record) {
+        return new ContactData("" + record.id, record.firstname, record.lastName," ");
+    }
+
+    static List<ContactData> convertContactList(List<ContactRecord> records) {
+        List<ContactData> result = new ArrayList<>();
+        for (var record : records) {
+            result.add(convert(record));
+        }
+        return result;
+    }
+
     private static GroupData convert(GroupRecord record) {
         return new GroupData("" + record.id, record.name, record.header, record.footer);
     }
+
     private static GroupRecord convert (GroupData data) {
         var id = data.id();
         if ("".equals(id)){
@@ -55,5 +72,11 @@ public class HibernateHelper  extends  HelperBase{
                  session.persist(convert(groupData));
                  session.getTransaction().commit();
              });
+    }
+
+    public List<ContactData> getContactsInGroup(GroupData group) {
+        return sessionFactory.fromSession(session -> {
+            return convertContactList(session.get(GroupRecord.class, group.id()).contacts);
+        });
     }
 }
