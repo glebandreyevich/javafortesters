@@ -33,7 +33,7 @@ public class GroupRemovaTests extends TestBase {
             app.hbm().CreateGroup(new GroupData("", "name", "header", "footer"));
         }
         app.groups().removeAllGroups();
-        Assertions.assertEquals(0,app.groups().getCount());
+        Assertions.assertEquals(0,app.hbm().getGroupCount());
     }
 
 }

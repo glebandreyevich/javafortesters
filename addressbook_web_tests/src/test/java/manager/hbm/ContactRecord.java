@@ -17,7 +17,6 @@ public class ContactRecord {
     @Column(name = "lastName")
     public String lastName;
 
-
     public ContactRecord() {
     }
 
