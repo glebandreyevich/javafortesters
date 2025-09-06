@@ -13,24 +13,24 @@ public class GroupRemovaTests extends TestBase {
 
     @Test
     public void CanRemoveGroup() {
-        if (app.groups().getCount() == 0)
+        if (app.hbm().getGroupCount() == 0)
        {
-           app.groups().CreateGroup(new GroupData("", "name", "header", "footer"));
+           app.hbm().CreateGroup(new GroupData("", "name", "header", "footer"));
        }
-        var oldGroups= app.groups().GetList();
+        var oldGroups= app.hbm().getGroupList();
         var rnd = new Random();
         var index = rnd.nextInt(oldGroups.size());
         app.groups().removeGroup(oldGroups.get(index));
-        var newGroups = app.groups().GetList();
+        var newGroups = app.hbm().getGroupList();
         var expectedList = new ArrayList<>(oldGroups);
         expectedList.remove(index);
         Assertions.assertEquals(newGroups ,expectedList);
     }
     @Test
     public void CanRemoveAllgroupOnce(){
-        if (app.groups().getCount() == 0)
+        if (app.hbm().getGroupCount() == 0)
         {
-            app.groups().CreateGroup(new GroupData("", "name", "header", "footer"));
+            app.hbm().CreateGroup(new GroupData("", "name", "header", "footer"));
         }
         app.groups().removeAllGroups();
         Assertions.assertEquals(0,app.groups().getCount());
