@@ -25,11 +25,11 @@ public class ApplicationManager {
         if (driver == null) {
             if ("firefox".equals(browser)) {
                 driver = new FirefoxDriver();
-                driver.get(properties.getProperty("web.BaseUrlFirefox"));
+                driver.get(properties.getProperty("web.BaseUrl"));
             }
             else if ("chrome".equals(browser)) {
                 driver = new ChromeDriver();
-                driver.get(properties.getProperty("web.BaseUrlChrome"));//chrome ругается на серты
+                driver.get(properties.getProperty("web.BaseUrl"));//chrome ругается на серты
 
             }
             else {
