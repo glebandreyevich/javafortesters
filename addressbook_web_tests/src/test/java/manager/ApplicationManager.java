@@ -18,6 +18,7 @@ public class ApplicationManager {
     private ContactHelper contact;
     private Properties properties;
     private JdbcHelper jdbc;
+    private HibernateHelper hbm;
 
     public void init(String browser, Properties properties) {
         this.properties = properties;
@@ -51,6 +52,12 @@ public class ApplicationManager {
             groups = new GroupHelper(this);
         }
         return groups;
+    }
+    public HibernateHelper hbm() {
+        if (hbm==null) {
+            hbm = new HibernateHelper(this);
+        }
+        return hbm;
     }
     public JdbcHelper jdbc() {
         if (jdbc==null) {
