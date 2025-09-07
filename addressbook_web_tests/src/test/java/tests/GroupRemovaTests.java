@@ -30,10 +30,11 @@ public class GroupRemovaTests extends TestBase {
     public void CanRemoveAllgroupOnce(){
         if (app.hbm().getGroupCount() == 0)
         {
-            app.hbm().CreateGroup(new GroupData("", "name", "header", "footer"));
+            app.groups().CreateGroup(new GroupData("", "name", "header", "footer"));
+
         }
         app.groups().removeAllGroups();
-        Assertions.assertEquals(0,app.hbm().getGroupCount());
+        Assertions.assertEquals(0,app.groups().getCount());
     }
 
 }

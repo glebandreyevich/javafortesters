@@ -30,7 +30,22 @@ public class ContactHelper extends HelperBase {
           selectContact(contact);
           click(By.cssSelector("div.left:nth-child(8) > input:nth-child(1)"));
 
+
       }
+
+    public void removeContactFromGroup(ContactData contact,GroupData group)
+    {
+        openHomePage();
+        SelectGroupContact(group);
+        selectContact(contact);
+        click(By.xpath("//input[@name='remove']"));
+
+    }
+
+    private  void SelectGroupContact(GroupData group) {
+        new Select(manager.driver.findElement(By.name("group"))).selectByValue(group.id());
+    }
+
 
     private void selectContact(ContactData contact) {
         click(By.cssSelector(String.format("[id='%s']", contact.id())));
@@ -54,6 +69,21 @@ public class ContactHelper extends HelperBase {
         selectGroup(group);
         submitContactData();
         returnToContactPage();
+    }
+    public void AddContactToGroup(ContactData contact,GroupData group){
+        openHomePage();
+        selectContact(contact);
+        selectGroupFromAddressBook(group);
+        SubmitAddToGroup();
+        returnToContactPage();
+    }
+
+    private void SubmitAddToGroup() {
+        click(By.xpath("//input[@value='Add to']"));
+    }
+
+    private void selectGroupFromAddressBook(GroupData group) {
+        new Select(manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
     }
 
     private void selectGroup(GroupData group) {
@@ -124,6 +154,7 @@ public class ContactHelper extends HelperBase {
         String xpath = String.format("//*[@id='%s']/ancestor::tr//td[8]", contact.id());
         var editButton = manager.driver.findElement(By.xpath(xpath));
         editButton.click();
-
     }
+
+
 }

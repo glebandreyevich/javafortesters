@@ -12,9 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class CreateContact extends TestBase {
@@ -69,6 +67,39 @@ public class CreateContact extends TestBase {
         var newRelated = app.hbm().getContactsInGroup(group);
         Assertions.assertEquals(oldRelated.size()+1,newRelated.size());
 
+    }
+    @Test
+    public void AddContactToGroup() {
+        if (app.hbm().getGroupCount() == 0) {
+            app.hbm().CreateGroup(new GroupData("", "name", "header", "footer"));
+        }
+        var group = app.hbm().getGroupList().get(0);
+        var OldContact  = app.hbm().getContactList();
+        var contactsInGroup = app.hbm().getContactsInGroup(group);
+
+        ContactData AddContact = null;
+        for (var contact : OldContact) {
+            boolean isInGroup = contactsInGroup.stream()
+                    .anyMatch(groupContact -> Objects.equals(groupContact.id(), contact.id()));
+
+            if (!isInGroup) {
+                AddContact = contact;
+                break;
+            }
+        }
+        if (AddContact == null) {
+            AddContact = new ContactData()
+                    .withFirstName(commonfunctions.randomString(10))
+                    .withLastName(commonfunctions.randomString(10))
+                    .withPhoto("src/test/resources/images/avatar.png");
+            app.contact().createContact(AddContact);
+            OldContact = app.hbm().getContactList();
+            AddContact = OldContact.get(OldContact.size() - 1);
+        }
+        var oldRelated = app.hbm().getContactsInGroup(group).size();
+        app.contact().AddContactToGroup(AddContact, group);
+        var newRelated = app.hbm().getContactsInGroup(group).size();
+        Assertions.assertEquals(oldRelated + 1, newRelated);
     }
 
 }
