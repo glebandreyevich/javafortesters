@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class GroupCreationTests extends TestBase {
 
@@ -49,10 +51,13 @@ public class GroupCreationTests extends TestBase {
         var result = new ArrayList<GroupData>(List.of(new GroupData("", "group name'", "", "")));
         return result;
     }
-    public static List<GroupData> singleRandomGroup(){
-        return List.of(new GroupData().withName(commonfunctions.randomString(10)).
+    public static Stream<GroupData> singleRandomGroup(){
+        Supplier<GroupData> randomGroup = () -> new GroupData()
+        .withName(commonfunctions.randomString(10)).
                 withHeader(commonfunctions.randomString(20)).
-                withFooter(commonfunctions.randomString(30)));
+                withFooter(commonfunctions.randomString(30));
+        return Stream.generate(randomGroup).limit(3);
+
     }
 
 

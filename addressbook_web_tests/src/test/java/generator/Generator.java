@@ -14,6 +14,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Generator {
     @Parameter(names={"--type", "-l"})
@@ -72,23 +75,18 @@ public class Generator {
             throw new IllegalArgumentException("Unknown Type" + type);
         }
     }
+    private Object generateData(Supplier<Object> dataSupplier){
+        return Stream.generate(dataSupplier).limit(count).collect(Collectors.toList());
+    }
 
     private Object generateGroups() {
-        var result = new ArrayList<GroupData>();
-        for (int i = 1; i < count; i++) {
-            result.add(new GroupData().withName(commonfunctions.randomString(i * 10))
-                    .withHeader(commonfunctions.randomString(i * 10))
-                    .withFooter(commonfunctions.randomString(i * 10)));
-        }
-        return result;
+        return  generateData(() -> new GroupData().withName(commonfunctions.randomString(10))
+                .withHeader(commonfunctions.randomString(10))
+                .withFooter(commonfunctions.randomString(10)));
     }
 
     private Object generateContact() {
-        var result = new ArrayList<ContactData>();
-        for (int i = 1; i < count; i++) {
-            result.add(new ContactData().withFirstName( commonfunctions.randomString(i * 10)).withLastName(commonfunctions.randomString(i*10)).withPhoto(commonfunctions.randomfile("src/test/resources/images/")));
-        }
-        return result;
+        return generateData(() -> new ContactData().withFirstName( commonfunctions.randomString( 10)).withLastName(commonfunctions.randomString(10)).withPhoto(commonfunctions.randomfile("src/test/resources/images/")));
     }
 
 }
