@@ -32,7 +32,7 @@ public class CreateContact extends TestBase {
     }
 
     public static List<ContactData> singleRandomContact() {
-        return List.of(new ContactData("", commonfunctions.randomString(10),commonfunctions.randomString(10),"src/test/resources/images/avatar.png"));
+        return List.of(new ContactData("", commonfunctions.randomString(10),commonfunctions.randomString(10),"src/test/resources/images/avatar.png", "", "", "", ""));
     }
 
 

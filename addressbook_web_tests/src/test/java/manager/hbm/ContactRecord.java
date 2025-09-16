@@ -16,6 +16,15 @@ public class ContactRecord {
     public String firstname;
     @Column(name = "lastName")
     public String lastName;
+    @Column(name = "home")
+    public String home;
+    @Column(name = "mobile")
+    public String mobile;
+    @Column(name = "work")
+    public String work;
+    @Column(name = "phone2")
+    public String phone2;
+
 
     public ContactRecord() {
     }

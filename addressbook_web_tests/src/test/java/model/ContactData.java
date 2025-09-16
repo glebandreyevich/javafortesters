@@ -21,21 +21,37 @@ public record ContactData(
         //String birthdayDay,
         //String birthdayMonth,
         //String birthdayYear
-        String Photo) {
+        String Photo,
+        String home,
+        String mobile,
+        String work,
+        String phone2) {
     public ContactData() {
-        this(" ", "", "", " ");
+        this(" ", "", "", " ", "", "", "", "");
     }
     public ContactData withFirstName(String firstName){
-        return new ContactData(this.id,firstName,this.lastName, this.Photo);
+        return new ContactData(this.id,firstName,this.lastName, this.Photo, this.home, this.mobile, this.work, this.phone2);
     }
     public ContactData withLastName(String lastName){
-        return new ContactData(this.id,this.firstName,lastName, this.Photo);
+        return new ContactData(this.id,this.firstName,lastName, this.Photo, this.home, this.mobile, this.work, this.phone2);
     }
     public ContactData withId(String id){
-        return new ContactData(id ,this.firstName,this.lastName, this.Photo);
+        return new ContactData(id ,this.firstName,this.lastName, this.Photo, this.home, this.mobile, this.work, this.phone2);
     }
     public ContactData withPhoto(String Photo){
-        return new ContactData(this.id ,this.firstName,this.lastName, Photo);
+        return new ContactData(this.id ,this.firstName,this.lastName, Photo, this.home, this.mobile, this.work, this.phone2);
+    }
+    public ContactData withHome(String home){
+        return new ContactData(this.id ,this.firstName,this.lastName, this.Photo, home, this.mobile, this.work, this.phone2);
+    }
+    public ContactData withMobile(String mobile){
+        return new ContactData(this.id ,this.firstName,this.lastName, this.Photo, this.home, mobile, this.work, this.phone2);
+    }
+    public ContactData withWork(String work){
+        return new ContactData(this.id ,this.firstName,this.lastName, this.Photo, this.home, this.mobile, work, this.phone2);
+    }
+    public ContactData withPhone2(String phone2){
+        return new ContactData(this.id ,this.firstName,this.lastName, this.Photo, this.home, this.mobile, this.work, phone2);
     }
 
 
