@@ -166,12 +166,24 @@ public class ContactHelper extends HelperBase {
     }
 
     public Map<String, String> getPhones() {
+        return getData(5);
+    }
+
+    public Map<String, String> getEmail() {
+        return getData(4);
+    }
+
+    public Object getAddress() {
+        return getData(3);
+    }
+    private Map<String, String> getData(int index) {
         var result = new HashMap<String, String>();
         List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+
         for (WebElement row : rows) {
             var id = row.findElement(By.tagName("input")).getAttribute("id");
-            var phones = row.findElements(By.tagName("td")).get(5).getText();
-            result.put(id, phones);
+            var data = row.findElements(By.tagName("td")).get(index).getText();
+            result.put(id, data);
         }
         return result;
     }

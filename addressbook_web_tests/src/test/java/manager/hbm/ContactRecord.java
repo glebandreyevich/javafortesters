@@ -24,6 +24,15 @@ public class ContactRecord {
     public String work;
     @Column(name = "phone2")
     public String phone2;
+    @Column(name = "email")
+    public String email;
+    @Column(name = "email2")
+    public String email2;
+    @Column(name = "email3")
+    public String email3;
+    @Column(name = "address")
+    public String address;
+
 
 
     public ContactRecord() {
