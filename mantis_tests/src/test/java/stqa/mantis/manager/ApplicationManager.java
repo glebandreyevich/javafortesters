@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.net.DatagramSocket;
 import java.util.Properties;
 
 public class ApplicationManager {
@@ -14,6 +15,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private HTTPSessionHelper httpsessionHelper;
     private JamesCliHelper jamesCliHelper;
+    private MailHelper mailHelper;
 
     public void init(String browser, Properties properties) {
         this.string = browser;
@@ -60,7 +62,14 @@ public class ApplicationManager {
         }
         return jamesCliHelper;
     }
+    public MailHelper mail() {
+        if (mailHelper==null){
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
+    }
     public String property (String name) {
         return properties.getProperty(name);
     }
+
 }
