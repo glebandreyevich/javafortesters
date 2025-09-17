@@ -12,6 +12,7 @@ public class ApplicationManager {
     private Properties properties;
     private String string;
     private SessionHelper sessionHelper;
+    private HTTPSessionHelper httpsessionHelper;
 
     public void init(String browser, Properties properties) {
         this.string = browser;
@@ -45,5 +46,14 @@ public class ApplicationManager {
             sessionHelper = new SessionHelper(this);
         }
         return sessionHelper;
+    }
+    public HTTPSessionHelper http() {
+        if (httpsessionHelper==null){
+            httpsessionHelper = new HTTPSessionHelper(this);
+        }
+        return httpsessionHelper;
+    }
+    public String property (String name) {
+        return properties.getProperty(name);
     }
 }
