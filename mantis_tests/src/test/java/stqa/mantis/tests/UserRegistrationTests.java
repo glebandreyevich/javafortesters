@@ -18,7 +18,7 @@ public class UserRegistrationTests extends TestBase{
     @MethodSource("randomUserName")
     void canRegisterUser(String username){
         var email = String.format("%s@localhost",username);
-        app.jamescli().addUser(email,"password");
+        app.jamesApi().addUser(email,"password");
         app.ui().addUser(username,email);
         var messages = app.mail().receive(email,"password", Duration.ofSeconds(10));
         var text = messages.getFirst().content();
