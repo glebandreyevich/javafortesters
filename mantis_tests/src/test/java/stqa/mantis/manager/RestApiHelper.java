@@ -16,6 +16,9 @@ public class RestApiHelper extends HelperBase{
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
         Authorization.setApiKey(manager.property("apikey"));
+        defaultClient.setBasePath("http://localhost/mantisbt-2.25.8/api/rest");
+        defaultClient.setDebugging(true);
+
     }
 
     public void createIssue(IssueData issueData) {

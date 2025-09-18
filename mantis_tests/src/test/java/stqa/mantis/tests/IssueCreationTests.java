@@ -11,6 +11,6 @@ public class IssueCreationTests extends TestBase{
         app.rest().createIssue(new IssueData()
                 .withSummary(CommonFunction.randomString(10))
                 .withDescription(CommonFunction.randomString(50))
-                .withProject(1L));
+                .withProject(3L));
     }
 }
