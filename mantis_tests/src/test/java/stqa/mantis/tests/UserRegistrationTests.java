@@ -19,7 +19,7 @@ public class UserRegistrationTests extends TestBase{
     void canRegisterUser(String username){
         var email = String.format("%s@localhost",username);
         app.jamesApi().addUser(email,"password");
-        app.ui().addUser(username,email);
+        app.rest().addUser(username,email);
         var messages = app.mail().receive(email,"password", Duration.ofSeconds(10));
         var text = messages.getFirst().content();
         var pattern  = Pattern.compile("http://\\S*");

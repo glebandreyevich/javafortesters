@@ -1,6 +1,9 @@
 package stqa.mantis.manager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.sql.Driver;
 
 public class UIHelper extends HelperBase{
     public UIHelper(ApplicationManager manager)
@@ -16,6 +19,7 @@ public class UIHelper extends HelperBase{
     }
 
     public void openLink(String username ,String link, String password) {
+        manager.driver();
         manager.driver.navigate().to(link);
         type(By.id("realname"),username);
         type(By.id("password"),password);
