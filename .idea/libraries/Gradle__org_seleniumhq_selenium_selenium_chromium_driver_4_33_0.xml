@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.33.0/30ba14ad6df821a5ee1ed691fbe04d2e3ea2df3b/selenium-chromium-driver-4.33.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.33.0/86c9756a513a36707c566cd9a761b59e57045367/selenium-chromium-driver-4.33.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

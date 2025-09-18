@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.19.0/ba283760e5f4a5d875eaba78782f10aba5fdad9a/jackson-dataformat-xml-2.19.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.19.0/e3c7e402bd2c065f87e11ad4543fda7fd89b809e/jackson-dataformat-xml-2.19.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

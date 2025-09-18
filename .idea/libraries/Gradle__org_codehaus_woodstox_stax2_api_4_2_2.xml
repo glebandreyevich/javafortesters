@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/4.2.2/b0d746cadea928e5264f2ea294ea9a1bf815bbde/stax2-api-4.2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/4.2.2/89bd0d99524eebd106cd1941bfb7469af95511f0/stax2-api-4.2.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

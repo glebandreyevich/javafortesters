@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.51.0/9806bcb604f693fb4b75962df9d4d2d19da4806d/opentelemetry-api-1.51.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.51.0/16fcfc8a8e86e5394541f9e04baf716bac21dbf3/opentelemetry-api-1.51.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

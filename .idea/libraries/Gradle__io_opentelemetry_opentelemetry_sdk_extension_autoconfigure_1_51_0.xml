@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.51.0/3ed1a610bbbb0d2979254d8a6f70f99ab5f8dab5/opentelemetry-sdk-extension-autoconfigure-1.51.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.51.0/531adb3d25a566bf06c089ccb1938b86a3709197/opentelemetry-sdk-extension-autoconfigure-1.51.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

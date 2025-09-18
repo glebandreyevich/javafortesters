@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.33.0/f0609e34b70675495c1ed9859630e9d68b6ce7fc/selenium-ie-driver-4.33.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.33.0/b61480d885b4649357037918dcc9129c55babf53/selenium-ie-driver-4.33.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

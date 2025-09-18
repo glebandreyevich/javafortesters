@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.34.0/8c44e425fb10792a9723c23868375298b1ae1c3b/selenium-manager-4.34.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.34.0/ffd6998b5632d655587b56e2372248da6aae028c/selenium-manager-4.34.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

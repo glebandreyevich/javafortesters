@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.33.0/857a5156af7d592457a682ceefd726d562d7ccb3/selenium-edge-driver-4.33.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.33.0/a4069ac4aed4610841f69509c88c141b78521e11/selenium-edge-driver-4.33.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
