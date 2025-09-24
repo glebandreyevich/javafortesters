@@ -30,10 +30,9 @@ public class ContactHelper extends HelperBase {
 
       public void removeContact(ContactData contact)
       {
+          openHomePage();
           selectContact(contact);
           click(By.cssSelector("div.left:nth-child(8) > input:nth-child(1)"));
-
-
       }
 
     public void removeContactFromGroup(ContactData contact,GroupData group)
@@ -42,7 +41,6 @@ public class ContactHelper extends HelperBase {
         SelectGroupContact(group);
         selectContact(contact);
         click(By.xpath("//input[@name='remove']"));
-
     }
 
     private  void SelectGroupContact(GroupData group) {
@@ -122,7 +120,7 @@ public class ContactHelper extends HelperBase {
     }
 
     private void openHomePage() {
-        click(By.cssSelector("#nav > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"));
+        click(By.xpath("//*[@id=\"logo\"]"));
     }
 
     public List<ContactData> GetList() {
